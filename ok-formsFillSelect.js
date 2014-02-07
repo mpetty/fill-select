@@ -43,6 +43,7 @@
 		 *	Get results from method
 		 *
 		 *	@param {string} method
+		 *	@todo work on getting ajax method results to work asynchronously. maybe add the content in on complete.
 		 */
 		getResults : function(method) {
 			var results = (!this.methods[method]) ? null : this.methods[method](),
