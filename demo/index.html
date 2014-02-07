@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8' />
+	<title>Form Helper Example</title>
+
+	<link rel='stylesheet' type='text/css' media='all' href='demo.css'>
+	<script type='text/javascript' src='../jquery-1.10.2.js'></script>
+	<script type='text/javascript' src='../ok-formsFillSelect.js'></script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			$('#form-prefix').fillSelectField({method:'state'});
+		})
+	</script>
+</head>
+
+<body>
+	<div class="inside">
+		<form class="form-horizontal">
+
+			<div id="form-container">
+				<div class="form-header">
+					<h1>Personal Information</h1>
+				</div>
+
+				<div class="form-row">
+					<div class="control-group">
+						<h3>Applicant Name</h3>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-prefix">Prefix</label>
+
+						<div class="controls">
+							<select id="form-prefix" name="ddlPrefix">
+								<option value="">Please Select</option>
+								<option value="Ms.">Ms.</option>
+								<option value="Mrs.">Mrs.</option>
+								<option value="Mr.">Mr.</option>
+								<option value="Rev.">Rev.</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-firstName">First Name <span class="req">*</span></label>
+
+						<div class="controls">
+							<input class="v-required" type="text" id="form-firstName" name="txtFName" value="" required="required">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-middleName">Middle Name</label>
+
+						<div class="controls">
+							<input type="text" id="form-middleName" name="txtMiddleName" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-lastName">Last Name <span class="req">*</span></label>
+
+						<div class="controls">
+							<input class="v-required" type="text" id="form-lastName" name="txtLName" value="" required="required">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-suffix">Suffix</label>
+
+						<div class="controls">
+							<input type="text" id="form-suffix" name="txtSuffix" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-maidenName">Maiden Name</label>
+
+						<div class="controls">
+							<input type="text" id="form-maidenName" name="txtMaiden" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-formerName">Former Name</label>
+
+						<div class="controls">
+							<input type="text" id="form-formerName" name="txtFormer" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-preferredName">Preferred Name</label>
+
+						<div class="controls">
+							<input type="text" id="form-preferredName" name="txtPreferred" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-gender">Gender <span class="req">*</span></label>
+
+						<div class="controls">
+							<select  class="v-required" id="form-gender" name="radGender" required="required">
+								<option value="">Select one</option>
+								<option value="female">Female</option>
+								<option value="male">Male</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-dob">Date of Birth <span class="req">*</span></label>
+
+						<div class="controls">
+							<input type="text" id="form-dob" name="txtDOB" value="" title="Enter a valid US Date" required="required" data-validate-rule="date" data-adv-field="datepicker">
+							<p class="help">(mm/dd/yyyy)</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="control-group">
+						<h3>Foreign Address</h3>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-country">Country</label>
+
+						<div class="controls">
+							<select id="form-country" name="ddlCountry">
+								<option value="1">Test</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-address1">Street Line 1 <span class="req">*</span></label>
+
+						<div class="controls">
+							<input class="v-required" type="text" id="form-address1" name="txtPermAdd" value="" required="required">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label"for="form-address2">Street Line 2</label>
+
+						<div class="controls">
+							<input class="" type="text" id="form-address2" name="txtPermAdd2" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-city">City <span class="req">*</span></label>
+
+						<div class="controls">
+							<input class="v-required" type="text" id="form-city" name="txtPermCity" value="" required="required">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" class="control-label bold" for="form-state">State <span class="req">*</span></label>
+
+						<div class="controls">
+							<select id="form-state" name="ddlpermstate" class="validate v-required" required="required">
+								<option value="1">test</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" class="control-label" for="form-zipCode">Zip/Postal Code</label>
+
+						<div class="controls">
+							<input type="text" id="form-zipCode" name="txtPermZip">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="radDifferentCurrent">Is your current address different from the above?</label>
+
+						<div class="controls">
+							<div class="form-inline">
+								<input type="radio" id="form-DifferentCurrent1" name="radDifferentCurrent" value="yes" />
+								<label for="form-DifferentCurrent1">Yes</label>
+							</div>
+
+							<div class="form-inline">
+								<input type="radio" id="form-DifferentCurrent0" name="radDifferentCurrent" value="no" checked="checked" />
+								<label for="form-DifferentCurrent0">No</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row" data-field-condition="[name=radDifferentCurrent]:yes">
+					<div class="control-group">
+						<h3>Current Address</h3>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-currentCountry">Country</label>
+
+						<div class="controls">
+							<select id="form-currentCountry" name="ddlCurrentCountry">
+								<option value="1">test</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-currentAddress1">Street Line 1</label>
+
+						<div class="controls">
+							<input type="text" id="form-currentAddress1" name="txtCurrentAdd" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-currentAddress2">Street Line 2</label>
+
+						<div class="controls">
+							<input type="text" id="form-currentAddress2" name="txtCurrentAdd2" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-currentCity">City</label>
+
+						<div class="controls">
+							<input type="text" id="form-currentCity" name="txtCurrentCity" value="">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-currentState">State</label>
+
+						<div class="controls">
+							<select id="form-currentState" name="ddlCurrentState">
+								<option value="1">test</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-currentZipCode">Zip/Postal Code</label>
+
+						<div class="controls">
+							<input type="text" id="form-currentZipCode" name="txtCurrentZip">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="control-group">
+						<h3>Other Contact Information</h3>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-email">Valid Email Address <span class="req">*</span></label>
+
+						<div class="controls">
+							<input type="text" id="form-email" name="txtEmailPer" value="" data-validate-rule="email" required="required" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-homePhone">Phone <span class="req">*</span></label>
+
+						<div class="controls">
+							<input type="text" id="form-homePhone" name="txtPhone" value="" required="required" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="form-cellPhone">Cell Phone</label>
+
+						<div class="controls">
+							<input type="text" id="form-cellPhone" name="txtPhoneCell" value="" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</div><!--// inside -->
+</body>
+</html>
