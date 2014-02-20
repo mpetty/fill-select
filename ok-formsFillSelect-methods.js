@@ -12,66 +12,38 @@
 	/**
 	 *	States - using ajax
 	 */
-	$.fillSelectField.addMethod("state", function() {
-		var results = [],
-			states = {};
+	$.fillSelectField.addMethod("state", {url: 'http://ws.geonames.org/search', dataType: 'json', async: true, data: {country:'US',featureClass:'A',style:'full',type:'json',username:'thelearninghouse'}}, function(data) {
+		var geonames = (typeof data.geonames === 'object') ? data.geonames : false,
+			states = {},
+			results = [];
 
-		$.ajax({
-			url: 'http://ws.geonames.org/search',
-			dataType: 'json',
-			async: false,
-			data: {
-				country: 'US',
-				featureClass: 'A',
-				style: 'full',
-				type: 'json',
-				username: '' // Enter username
-			},
-			success: function(data) {
-				var geonames = (typeof data.geonames === 'object') ? data.geonames : false;
-
-				if(geonames) {
-					for(var key in geonames) {
-						(typeof geonames[key] !== 'undefined') ? states[geonames[key].adminCode1] = geonames[key].name : null;
-					}
-				}
+		if(geonames) {
+			for(var key in geonames) {
+				(typeof geonames[key] !== 'undefined') ? states[geonames[key].adminCode1] = geonames[key].name : null;
 			}
-		});
+		}
 
 		results.push(states);
 		return results;
-	});
+	}, true);
 
 	/**
 	 *	Countries - using ajax
 	 */
-	$.fillSelectField.addMethod("country", function() {
-		var results = [],
-			countries = {};
+	$.fillSelectField.addMethod("country", {url:'http://ws.geonames.org/countryInfo', dataType:'json', data: {style:'full', type: 'json', username: 'thelearninghouse'}}, function(data) {
+		var geonames = (typeof data.geonames === 'object') ? data.geonames : false,
+			countries = {},
+			results = [];
 
-		$.ajax({
-			url: 'http://ws.geonames.org/countryInfo',
-			dataType: 'json',
-			async: false,
-			data: {
-				style: 'full',
-				type: 'json',
-				username: '' // Enter username
-			},
-			success: function(data) {
-				var geonames = (typeof data.geonames === 'object') ? data.geonames : false;
-
-				if(geonames) {
-					for(var key in geonames) {
-						(typeof geonames[key] !== 'undefined') ? countries[geonames[key].countryCode] = geonames[key].countryName : null;
-					}
-				}
+		if(geonames) {
+			for(var key in geonames) {
+				(typeof geonames[key] !== 'undefined') ? countries[geonames[key].countryCode] = geonames[key].countryName : null;
 			}
-		});
+		}
 
 		results.push(countries);
 		return results;
-	});
+	}, true);
 
 	/**
 	 *	States
