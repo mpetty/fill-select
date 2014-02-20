@@ -3,6 +3,7 @@
  *
  *	@version 1.0.1
  *	@author Mitchell Petty <https://github.com/mpetty/ok-fillSelectField>
+ *	@todo add option for changing the text on first option in select fields. defaults to 'select one'
  */
 (function($) {
 "use strict";
@@ -122,12 +123,12 @@
 		},
 
 		/**
-		 * 	Default methods
+		 * 	Methods
 		 */
 		methods : {},
 
 		/**
-		 * 	List of ajax methods
+		 * 	Ajax methods
 		 */
 		ajaxMethods : {},
 		ajaxEvCount : 0
