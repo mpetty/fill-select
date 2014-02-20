@@ -14,6 +14,7 @@
 		 *
 		 *	@param {object} selector
 		 *	@param {object} options
+		 *	@return {object} selector
 		 */
 		init : function(selector, options) {
 			var self = this,
@@ -40,11 +41,11 @@
 		},
 
 		/**
-		 *	Get results from method
+		 *	Get results and update html
 		 *
-		 *	@param {string} method
+		 *	@param {array} results
+		 *	@param {object} selector
 		 *	@param {boolean} ajax
-		 *	@todo work on getting ajax method results to work asynchronously. maybe add the content in on complete.
 		 */
 		getResults : function(results, selector, ajax) {
 			var html = [],
@@ -60,7 +61,6 @@
 							name : results[key][key2]
 						});
 					}
-
 				}
 
 				for(var key in newResults) {
@@ -88,11 +88,9 @@
 			var self = this,
 				options = {url:null, dataType:'json'};
 
-			// Regular function
 			if(typeof method === 'function') {
 				this.methods[name] = {name:name, method:method, results: method()};
 
-			// Else its ajax
 			} else if(typeof method === 'object') {
 				options = $.extend({}, options, method);
 
