@@ -12,14 +12,24 @@
 	/**
 	 *	States - using ajax
 	 */
-	$.fillSelectField.addMethod("state", {url: 'http://ws.geonames.org/search', dataType: 'json', async: true, data: {country:'US',featureClass:'A',style:'full',type:'json',username:'thelearninghouse'}}, function(data) {
+	$.fillSelectField.addMethod("state", {url: 'http://api.geonames.org/searchJSON', dataType: 'json', data: {country:'US',type:'json', featureCode: 'ADM1', maxRows: 1000, username:'thelearninghouse'}}, function(data) {
 		var geonames = (typeof data.geonames === 'object') ? data.geonames : false,
 			states = {},
 			results = [];
 
 		if(geonames) {
+			geonames.sort(function(a, b) {
+			    if (a.adminName1 == b.adminName1) {
+			        return 0;
+			    } else if (a.adminName1 > b.adminName1) {
+			        return 1;
+			    }
+
+			    return -1;
+			});
+
 			for(var key in geonames) {
-				(typeof geonames[key] !== 'undefined') ? states[geonames[key].adminCode1] = geonames[key].name : null;
+				(typeof geonames[key] !== 'undefined') ? states[geonames[key].adminCode1] = geonames[key].adminName1 : null;
 			}
 		}
 
@@ -30,18 +40,29 @@
 	/**
 	 *	Countries - using ajax
 	 */
-	$.fillSelectField.addMethod("country", {url:'http://ws.geonames.org/countryInfo', dataType:'json', data: {style:'full', type: 'json', username: 'thelearninghouse'}}, function(data) {
+	$.fillSelectField.addMethod("country", {url:'http://api.geonames.org/countryInfoJSON', dataType:'json', data: {orderby: 'countryName', maxRows: 1000, username: 'thelearninghouse'}}, function(data) {
 		var geonames = (typeof data.geonames === 'object') ? data.geonames : false,
 			countries = {},
 			results = [];
 
 		if(geonames) {
+			geonames.sort(function(a, b) {
+			    if (a.countryName == b.countryName) {
+			        return 0;
+			    } else if (a.countryName > b.countryName) {
+			        return 1;
+			    }
+
+			    return -1;
+			});
+
 			for(var key in geonames) {
 				(typeof geonames[key] !== 'undefined') ? countries[geonames[key].countryCode] = geonames[key].countryName : null;
 			}
 		}
 
 		results.push(countries);
+
 		return results;
 	}, true);
 
