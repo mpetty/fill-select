@@ -87,29 +87,14 @@
 		 */
 		addMethod : function(name, method, ajaxCallback) {
 			var self = this,
-				options = {url:null, dataType:'json'};
+				defoptions = {},
+				options = {};
 
 			if(typeof method === 'function') {
 				this.methods[name] = {name:name, method:method, results: method()};
 
 			} else if(typeof method === 'object') {
-				options = $.extend({}, options, method);
-
-				this.ajaxMethods[name] = {
-					name: name,
-					id: this.ajaxEvCount,
-					method: ajaxCallback,
-					ajaxComplete: false,
-					results: null,
-					args: null,
-				};
-
-				this.ajaxEvCount++;
-
-				$.ajax({
-					url: options.url,
-					dataType: options.dataType,
-					data: options.data,
+				defoptions = {
 					global: false,
 					success: function(data) {
 						self.ajaxMethods[name].args = data;
@@ -117,7 +102,22 @@
 						self.ajaxMethods[name].results = ajaxCallback(data);
 						$(document).trigger('fillfield_ajaxComplete_'+self.ajaxMethods[name].id+'.fillfield');
 					}
-				});
+				};
+
+				options = $.extend(defoptions, options, method);
+
+				this.ajaxMethods[name] = {
+					name: name,
+					id: this.ajaxEvCount,
+					method: ajaxCallback,
+					ajaxComplete: false,
+					results: null,
+					args: null
+				};
+
+				this.ajaxEvCount++;
+
+				$.ajax(defoptions);
 			}
 
 		},
