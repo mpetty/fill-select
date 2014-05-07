@@ -1,7 +1,7 @@
 /**
  *	Fill Select FIeld
  *
- *	@version 1.0.1
+ *	@version 1.0.2
  *	@author Mitchell Petty <https://github.com/mpetty/ok-fillSelectField>
  *	@todo add option for changing the text on first option in select fields. defaults to 'select one'
  */
@@ -87,24 +87,13 @@
 		 */
 		addMethod : function(name, method, ajaxCallback) {
 			var self = this,
-				defoptions = {},
-				options = {};
+				defoptions = {global:false};
 
 			if(typeof method === 'function') {
 				this.methods[name] = {name:name, method:method, results: method()};
 
 			} else if(typeof method === 'object') {
-				defoptions = {
-					global: false,
-					success: function(data) {
-						self.ajaxMethods[name].args = data;
-						self.ajaxMethods[name].ajaxComplete = true;
-						self.ajaxMethods[name].results = ajaxCallback(data);
-						$(document).trigger('fillfield_ajaxComplete_'+self.ajaxMethods[name].id+'.fillfield');
-					}
-				};
-
-				options = $.extend(defoptions, options, method);
+				this.ajaxEvCount++;
 
 				this.ajaxMethods[name] = {
 					name: name,
@@ -115,9 +104,14 @@
 					args: null
 				};
 
-				this.ajaxEvCount++;
+				defoptions.success  = function(data) {
+					self.ajaxMethods[name].args = data;
+					self.ajaxMethods[name].ajaxComplete = true;
+					self.ajaxMethods[name].results = ajaxCallback(data);
+					$(document).trigger('fillfield_ajaxComplete_'+self.ajaxMethods[name].id+'.fillfield');
+				};
 
-				$.ajax(defoptions);
+				$.ajax($.extend({}, defoptions, method));
 			}
 
 		},
