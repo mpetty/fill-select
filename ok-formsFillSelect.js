@@ -28,10 +28,10 @@
 				if(ajaxMethod.results) {
 					this.getResults(ajaxMethod.results, selector);
 				} else {
-					$(document).on('fillfield_ajaxComplete_'+ajaxMethod.id+'.fillfield', function(){
+					$(document).on('fillfield_ajaxComplete.fillfield_'+ajaxMethod.id+'.fillfield', function() {
 						ajaxMethod = self.ajaxMethods[options.method];
 						self.getResults(ajaxMethod.results, selector, true);
-						$(document).off('fillfield_ajaxComplete_'+ajaxMethod.id+'.fillfield');
+						$(document).off('fillfield_ajaxComplete.fillfield_'+ajaxMethod.id+'.fillfield');
 					});
 				}
 			} else if(typeof this.methods[method] !== 'undefined') {
@@ -108,7 +108,7 @@
 					self.ajaxMethods[name].args = data;
 					self.ajaxMethods[name].ajaxComplete = true;
 					self.ajaxMethods[name].results = ajaxCallback(data);
-					$(document).trigger('fillfield_ajaxComplete_'+self.ajaxMethods[name].id+'.fillfield');
+					$(document).trigger('fillfield_ajaxComplete.fillfield_'+self.ajaxMethods[name].id+'.fillfield');
 				};
 
 				$.ajax($.extend({}, defoptions, method));
