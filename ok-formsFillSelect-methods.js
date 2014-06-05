@@ -29,7 +29,7 @@
 			});
 
 			for(var key in geonames) {
-				(typeof geonames[key] !== 'undefined') ? states[geonames[key].adminCode1] = geonames[key].adminName1 : null;
+				(typeof geonames[key] !== 'undefined' && geonames[key] !== 'US') ? states[geonames[key].adminCode1] = geonames[key].adminName1 : null;
 			}
 		}
 
@@ -44,6 +44,8 @@
 		var geonames = (typeof data.geonames === 'object') ? data.geonames : false,
 			countries = {},
 			results = [];
+
+		countries['US'] = 'United States';
 
 		if(geonames) {
 			geonames.sort(function(a, b) {
