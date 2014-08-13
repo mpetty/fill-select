@@ -105,10 +105,12 @@
 				};
 
 				defoptions.success  = function(data) {
+					self.ajaxEvComplete++;
 					self.ajaxMethods[name].args = data;
 					self.ajaxMethods[name].ajaxComplete = true;
 					self.ajaxMethods[name].results = ajaxCallback(data);
 					$(document).trigger('fillfield_ajaxComplete.fillfield_'+self.ajaxMethods[name].id+'.fillfield');
+					$(document).trigger('fillfield_ajaxSuccess');
 				};
 
 				$.ajax($.extend({}, defoptions, method));
@@ -125,7 +127,8 @@
 		 * 	Ajax methods
 		 */
 		ajaxMethods : {},
-		ajaxEvCount : 0
+		ajaxEvCount : 0,
+		ajaxEvComplete : 0
 
 	};
 
