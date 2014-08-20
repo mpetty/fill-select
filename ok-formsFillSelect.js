@@ -20,22 +20,23 @@
 		init : function(selector, options) {
 			var self = this,
 				method = (typeof options.method === 'string') ? options.method : false,
+				callback = (typeof options.callback === 'function') ? options.callback : false,
 				ajaxMethod = false;
 
 			if(typeof this.ajaxMethods[method] !== 'undefined') {
 				ajaxMethod = this.ajaxMethods[options.method];
 
 				if(ajaxMethod.results) {
-					this.getResults(ajaxMethod.results, selector);
+					this.getResults(ajaxMethod.results, selector, callback);
 				} else {
 					$(document).on('fillfield_ajaxComplete.fillfield_'+ajaxMethod.id+'.fillfield', function() {
 						ajaxMethod = self.ajaxMethods[options.method];
-						self.getResults(ajaxMethod.results, selector, true);
+						self.getResults(ajaxMethod.results, selector, callback);
 						$(document).off('fillfield_ajaxComplete.fillfield_'+ajaxMethod.id+'.fillfield');
 					});
 				}
 			} else if(typeof this.methods[method] !== 'undefined') {
-				this.getResults(this.methods[method].results, selector);
+				this.getResults(this.methods[method].results, selector, callback);
 			}
 
 			return selector;
@@ -46,9 +47,9 @@
 		 *
 		 *	@param {array} results
 		 *	@param {object} selector
-		 *	@param {boolean} ajax
+		 *	@param {function} callback
 		 */
-		getResults : function(results, selector, ajax) {
+		getResults : function(results, selector, callback) {
 			var html = [],
 				newResults = [];
 
@@ -75,6 +76,8 @@
 						$($(selector)[key]).empty().append(html);
 					}
 				}
+
+				if(typeof callback === 'function') callback.call(this);
 			}
 		},
 

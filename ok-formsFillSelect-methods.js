@@ -35,7 +35,7 @@
 
 		results.push(states);
 		return results;
-	}, true);
+	});
 
 	/**
 	 *	Countries - using ajax
@@ -66,7 +66,7 @@
 		results.push(countries);
 
 		return results;
-	}, true);
+	});
 
 	/**
 	 *	States
