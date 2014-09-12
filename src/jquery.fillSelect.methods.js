@@ -1,7 +1,7 @@
-/**
+/*!
  *	Add methods for fill form select
  *
- *	@version 1.0.0
+ *	@version 1.0.2
  *	@author Mitchell Petty <https://github.com/mpetty/ok-fillSelectField>
  */
 (function($) {
