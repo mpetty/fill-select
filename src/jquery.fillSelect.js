@@ -50,29 +50,35 @@
 		 */
 		getResults : function(results, selector, callback) {
 			var html = [],
+				curValue = '',
 				newResults = [];
 
 			if(results) {
 				html.push('<option value="">Select One</option>');
 
-				for(var key in results) {
-					for(var key2 in results[key]) {
+				for(var results_key in results) {
+					for(var results_key2 in results[results_key]) {
 						newResults.push({
-							value : key2,
-							name : results[key][key2]
+							value : results_key2,
+							name : results[results_key][results_key2]
 						});
 					}
 				}
 
-				for(var key in newResults) {
-					html.push('<option value="'+newResults[key].value+'">'+newResults[key].name+'</option>');
+				for(var newResults_key in newResults) {
+					html.push('<option value="'+newResults[newResults_key].value+'">'+newResults[newResults_key].name+'</option>');
 				}
 
 				html = html.join('');
 
 				if(html.length) {
 					for(var key in results) {
+						curValue = $($(selector)[key]).val();
 						$($(selector)[key]).empty().append(html);
+
+						if($('option[value="'+curValue+'"]', html).length) {
+							$($(selector)[key]).val(curValue);
+						}
 					}
 				}
 

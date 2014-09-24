@@ -19,7 +19,7 @@
 
 		if(geonames) {
 			geonames.sort(function(a, b) {
-			    if (a.adminName1 == b.adminName1) {
+			    if (a.adminName1 === b.adminName1) {
 			        return 0;
 			    } else if (a.adminName1 > b.adminName1) {
 			        return 1;
@@ -29,7 +29,7 @@
 			});
 
 			for(var key in geonames) {
-				(typeof geonames[key] !== 'undefined' && geonames[key] !== 'US') ? states[geonames[key].adminCode1] = geonames[key].adminName1 : null;
+				states[geonames[key].adminCode1] = (typeof geonames[key] !== 'undefined' && geonames[key] !== 'US') ?  geonames[key].adminName1 : null;
 			}
 		}
 
@@ -49,7 +49,7 @@
 
 		if(geonames) {
 			geonames.sort(function(a, b) {
-			    if (a.countryName == b.countryName) {
+			    if (a.countryName === b.countryName) {
 			        return 0;
 			    } else if (a.countryName > b.countryName) {
 			        return 1;
@@ -59,7 +59,7 @@
 			});
 
 			for(var key in geonames) {
-				(typeof geonames[key] !== 'undefined') ? countries[geonames[key].countryCode] = geonames[key].countryName : null;
+				countries[geonames[key].countryCode] = (typeof geonames[key] !== 'undefined') ? geonames[key].countryName : null;
 			}
 		}
 
