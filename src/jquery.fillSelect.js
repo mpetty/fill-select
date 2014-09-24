@@ -69,16 +69,18 @@
 					html.push('<option value="'+newResults[newResults_key].value+'">'+newResults[newResults_key].name+'</option>');
 				}
 
-				html = html.join('');
+				html = $(html.join(''));
 
 				if(html.length) {
 					for(var key in results) {
 						curValue = $($(selector)[key]).val();
-						$($(selector)[key]).empty().append(html);
+						curValue = (typeof curValue === 'object') ? curValue : [curValue];
 
-						if($('option[value="'+curValue+'"]', html).length) {
-							$($(selector)[key]).val(curValue);
+						for(var value in curValue) {
+							html.filter('option[value="'+curValue[value]+'"]').attr('selected', 'selected');
 						}
+
+						$($(selector)[key]).empty().append(html);
 					}
 				}
 
