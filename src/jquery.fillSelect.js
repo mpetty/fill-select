@@ -84,6 +84,8 @@
 					}
 				}
 
+				$(document).trigger('fillfield_renderComplete.fillfield');
+
 				if(typeof callback === 'function') callback.call(this, selector);
 			}
 		},
