@@ -1,7 +1,7 @@
 /*!
  *	Fill Select FIeld
  *
- *	@version 1.0.3
+ *	@version 1.0.4
  *	@author Mitchell Petty <https://github.com/mpetty/ok-fillSelectField>
  */
 (function($) {
@@ -97,15 +97,16 @@
 		 *	@param {mixed} method method or object. if object is supplied, method is assumed to be ajax.
 		 *	@param {function} ajaxCallback
 		 */
-		addMethod : function(name, method, ajaxCallback) {
+		addMethod : function(name, method, ajaxCallback, active) {
 			var self = this,
+				isActive = (active) ? active : true,
 				defoptions = {global:false};
 
 			if(typeof method === 'function') {
 				this.methods[name] = {name:name, method:method, results: method()};
 
 			} else if(typeof method === 'object') {
-				this.ajaxEvCount++;
+				if(isActive) this.ajaxEvCount++;
 
 				this.ajaxMethods[name] = {
 					name: name,
@@ -163,4 +164,4 @@
 	};
 
 // EOF
-})(jQuery);3
+})(jQuery);
