@@ -27,10 +27,12 @@
 
 				if(ajaxMethod.results) {
 					this.getResults(ajaxMethod.results, selector, callback);
+					$(document).trigger('fillfield_renderComplete.fillfield');
 				} else {
 					$(document).on('fillfield_ajaxComplete.fillfield_'+ajaxMethod.id+'.fillfield', function() {
 						ajaxMethod = self.ajaxMethods[options.method];
 						self.getResults(ajaxMethod.results, selector, callback);
+						if(ajaxMethod.active) $(document).trigger('fillfield_renderComplete.fillfield');
 						$(document).off('fillfield_ajaxComplete.fillfield_'+ajaxMethod.id+'.fillfield');
 					});
 				}
@@ -84,8 +86,6 @@
 					}
 				}
 
-				$(document).trigger('fillfield_renderComplete.fillfield');
-
 				if(typeof callback === 'function') callback.call(this, selector);
 			}
 		},
@@ -99,7 +99,7 @@
 		 */
 		addMethod : function(name, method, ajaxCallback, active) {
 			var self = this,
-				isActive = (active) ? active : true,
+				isActive = (typeof active !== 'undefined') ? active : true,
 				defoptions = {global:false};
 
 			if(typeof method === 'function') {
@@ -109,6 +109,7 @@
 				if(isActive) this.ajaxEvCount++;
 
 				this.ajaxMethods[name] = {
+					active: isActive,
 					name: name,
 					id: this.ajaxEvCount,
 					method: ajaxCallback,
