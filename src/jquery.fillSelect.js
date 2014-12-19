@@ -119,7 +119,7 @@
 				};
 
 				defoptions.success  = function(data) {
-					self.ajaxEvComplete++;
+					if(isActive) self.ajaxEvComplete++;
 					self.ajaxMethods[name].args = data;
 					self.ajaxMethods[name].ajaxComplete = true;
 					self.ajaxMethods[name].results = ajaxCallback(data);
