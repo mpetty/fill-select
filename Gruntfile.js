@@ -54,19 +54,13 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
-			jshint: {
+			js: {
 				files: [
 					'src/*.js'
 				],
 				tasks: [
-					'jshint'
-				]
-			},
-			uglify: {
-				files: [
-					'src/*.js',
-				],
-				tasks: [
+					'jshint',
+					'concat',
 					'uglify'
 				]
 			}
@@ -74,9 +68,9 @@ module.exports = function(grunt) {
 
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.registerTask('default', ['concat', 'uglify']);
 
