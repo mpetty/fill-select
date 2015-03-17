@@ -14,8 +14,7 @@
 	 */
 	$.fillSelectField.addMethod("state", {url: 'http://api.geonames.org/searchJSON', dataType: 'json', data: {country:'US',type:'json', featureCode: 'ADM1', maxRows: 1000, username:'thelearninghouse'}}, function(data) {
 		var geonames = (typeof data.geonames === 'object') ? data.geonames : false,
-			states = {},
-			results = [];
+			states = {};
 
 		if(geonames) {
 			geonames.sort(function(a, b) {
@@ -33,8 +32,7 @@
 			}
 		}
 
-		results.push(states);
-		return results;
+		return states;
 	});
 
 	/**
@@ -42,8 +40,7 @@
 	 */
 	$.fillSelectField.addMethod("country", {url:'http://api.geonames.org/countryInfoJSON', dataType:'json', data: {orderby: 'countryName', maxRows: 1000, username: 'thelearninghouse'}}, function(data) {
 		var geonames = (typeof data.geonames === 'object') ? data.geonames : false,
-			countries = {},
-			results = [];
+			countries = {};
 
 		countries['US'] = 'United States';
 
@@ -63,17 +60,14 @@
 			}
 		}
 
-		results.push(countries);
-
-		return results;
+		return countries;
 	});
 
 	/**
 	 *	States
 	 */
 	$.fillSelectField.addMethod("state_noajax", function() {
-		var results = [],
-			states = {
+		var states = {
 			    "AL": "Alabama",
 			    "AK": "Alaska",
 			    "AS": "American Samoa",
@@ -135,8 +129,7 @@
 			    "WY": "Wyoming"
 			};
 
-		results.push(states);
-		return results;
+		return states;
 	});
 
 // EOF

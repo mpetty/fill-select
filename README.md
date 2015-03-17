@@ -38,11 +38,9 @@ Without ajax
 $.fillSelectField.addMethod("method_name", function() {
     // value is the <option>'s value, text is the text that is displayed for the option.
 
-    var results = [
+    return results = {
         value : text
-    ];
-
-    return results;
+    };
 });
 ```
 
@@ -53,10 +51,8 @@ The 2nd parameter is the same as what you would normally use in $.ajax()
 $.fillSelectField.addMethod("method_name", {}, function() {
     // value is the <option>'s value, text is the text that is displayed for the option.
 
-    var results = [
+    return results = {
         value : text
-    ];
-
-    return results;
+    };
 });
 ```

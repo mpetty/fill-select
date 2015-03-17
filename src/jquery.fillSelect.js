@@ -79,14 +79,12 @@
 
             	// Loop through results
                 for(var results_key in results) {
-                    for(var results_key2 in results[results_key]) {
 
-                    	// Build new object
-                        newresults.push({
-                            value : results_key2,
-                            name : results[results_key][results_key2]
-                        });
-                    }
+                	// Build new object
+                    newresults.push({
+                        value : results_key,
+                        name : results[results_key]
+                    });
                 }
             }
 
