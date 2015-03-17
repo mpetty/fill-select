@@ -48,8 +48,10 @@ With ajax
 
 The 2nd parameter is the same as what you would normally use in $.ajax()
 
+The 3rd parameter is a function used to return the results. It comes with the data object returned from jquery's ajax success callback which you can use to build the results object.
+
 ```javascript
-$.fillSelectField.addMethod("method_name", {}, function() {
+$.fillSelectField.addMethod("method_name", {}, function(data) {
     // value is the <option>'s value, text is the text that is displayed for the option.
 
     return results = {
