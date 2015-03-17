@@ -45,6 +45,7 @@ $.fillSelectField.addMethod("method_name", function() {
 ```
 
 With ajax
+
 The 2nd parameter is the same as what you would normally use in $.ajax()
 
 ```javascript
