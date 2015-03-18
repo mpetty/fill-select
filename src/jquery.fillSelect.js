@@ -23,7 +23,7 @@
     	this.create();
     };
 
-    fillSelect.prototype = {
+    FillSelect.prototype = {
 
         /**
          *  Create
