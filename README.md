@@ -6,7 +6,7 @@ Fill Select is a library for dynamically adding select field options.
 
 ## Bower Installation
 
-add Fill Select to your project's `bower.json` file, like:
+Add to your project's `bower.json` file, like:
 
 ```json
 {
@@ -22,12 +22,7 @@ add Fill Select to your project's `bower.json` file, like:
 ## Usage
 
 ```javascript
-$('select').fillSelectField({
-    method : 'mymethod',                // Name of the method to fire
-    callback : function() {},           // Fired after fill select is completed
-    defaultText : 'Select One',         // Default text displayed at the top of the select list. Set to false to disable.
-    optionString : 'option'             // Options string. can be set to a function to add default attributes. parameters are value and name.
-});
+$('select').fillSelectField(options);
 ```
 
 ### To add methods:
@@ -58,4 +53,14 @@ $.fillSelectField.addMethod("method_name", {}, function(data) {
         value : text
     };
 });
+```
+
+
+## Options available
+
+```javascript
+method : 'mymethod',                // Name of the method to fire
+callback : function() {},           // Fired after fill select is completed
+defaultText : 'Select One',         // Default text displayed at the top of the select list. Set to false to disable.
+optionString : 'option'             // Options string. can be set to a function to add default attributes. parameters are value and name.
 ```
