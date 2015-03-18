@@ -55,7 +55,6 @@ $.fillSelectField.addMethod("method_name", {}, function(data) {
 });
 ```
 
-
 ## Options available
 
 ```javascript
