@@ -1,8 +1,12 @@
 {
 	"name": "Fill Select",
-	"version": "1.0.5",
+
+	"version": "1.0.6",
+
 	"license": "MIT",
+
 	"private": true,
+
 	"ignore": [
 		"**/.*",
 		"node_modules",
@@ -13,10 +17,12 @@
 		"Gruntfile.js",
 		"readme.md"
 	],
+
   	"main": [
   		"jquery.fillSelect.min.js",
   		"jquery.fillSelect.methods.min.js"
   	],
+
 	"dependencies": {
 		"jquery": ">=1.7.0"
 	}

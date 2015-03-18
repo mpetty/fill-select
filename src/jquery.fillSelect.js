@@ -1,7 +1,7 @@
 /*!
  *  Fill Select
  *
- *  @version 1.0.5
+ *  @version 1.0.6
  *  @author Mitchell Petty <https://github.com/mpetty/fill-select>
  * 	@todo Ajax functionality needs to be cleaned up.
  */

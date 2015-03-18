@@ -1,4 +1,4 @@
-# Fill Select v1.0.5
+# Fill Select v1.0.6
 
 Fill Select is a library for dynamically adding select field options.
 
