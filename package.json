@@ -1,10 +1,10 @@
 {
-  "name": "ok-fillSelectField",
+  "name": "fillSelect",
   "version": "1.0.5",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git@github.com:mpetty/ok-fillSelectField.git"
+    "url": "git@github.com:mpetty/fill-select.git"
   },
   "devDependencies": {
     "grunt": ">=0.4.1",

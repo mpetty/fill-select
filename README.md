@@ -14,7 +14,7 @@ Add to your project's `bower.json` file, like:
   "version": "1.0.0",
   "dependencies": {
     "jquery": "1.11.0",
-    "fillselect": "git@github.com:mpetty/ok-fillSelectField"
+    "fillselect": "git@github.com:mpetty/fill-select"
   }
 }
 ```
@@ -22,7 +22,7 @@ Add to your project's `bower.json` file, like:
 ## Usage
 
 ```javascript
-$('select').fillSelectField(options);
+$('select').fillSelect(options);
 ```
 
 ### To add methods:
@@ -30,7 +30,7 @@ $('select').fillSelectField(options);
 Without ajax
 
 ```javascript
-$.fillSelectField.addMethod("method_name", function() {
+$.fillSelect.addMethod("method_name", function() {
     // value is the <option>'s value, text is the text that is displayed for the option.
 
     return results = {
@@ -46,7 +46,7 @@ The 2nd parameter is the same as what you would normally use in $.ajax()
 The 3rd parameter is a function used to return the results. It comes with the data object returned from jquery's ajax success callback which you can use to build the results object.
 
 ```javascript
-$.fillSelectField.addMethod("method_name", {}, function(data) {
+$.fillSelect.addMethod("method_name", {}, function(data) {
     // value is the <option>'s value, text is the text that is displayed for the option.
 
     return results = {

@@ -9,11 +9,11 @@
 	<script type='text/javascript' src='../jquery.fillSelect.methods.min.js'></script>
 	<script type='text/javascript'>
 		$(document).ready(function(){
-			$('select.states').fillSelectField({method:'state'});
-			$('select.countries').fillSelectField({method:'country'});
+			$('select.states').fillSelect({method:'state'});
+			$('select.countries').fillSelect({method:'country'});
 
 			// Example showing how to fire event when all ajax methods are loaded
-			$.when.apply($, $.fillSelectField.ajaxDeferred).done(function() {
+			$.when.apply($, $.fillSelect.ajaxDeferred).done(function() {
 				console.log('all ajax complete');
 			});
 		});

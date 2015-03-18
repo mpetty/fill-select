@@ -1,8 +1,8 @@
 /*!
- *  Fill Select FIeld
+ *  Fill Select
  *
  *  @version 1.0.5
- *  @author Mitchell Petty <https://github.com/mpetty/ok-fillSelectField>
+ *  @author Mitchell Petty <https://github.com/mpetty/fill-select>
  * 	@todo Ajax functionality needs to be cleaned up.
  */
 (function($) {
@@ -14,16 +14,16 @@
      *  @param {object} selector
      *  @param {object} options
      */
-    var FillSelectField = function(selector, options) {
+    var FillSelect = function(selector, options) {
     	this.selector = $(selector);
-        this.options = $.extend({}, $.fn.fillSelectField.defaults, options);
-        this.fillSelectGlobal = $.fillSelectField;
-        this.selector.data('fillSelectField', this.options);
+        this.options = $.extend({}, $.fn.fillSelect.defaults, options);
+        this.fillSelectGlobal = $.fillSelect;
+        this.selector.data('fillSelect', this.options);
         this.method = false;
     	this.create();
     };
 
-    FillSelectField.prototype = {
+    fillSelect.prototype = {
 
         /**
          *  Create
@@ -180,9 +180,9 @@
     };
 
     /**
-     * 	Fill Select field global
+     * 	Fill Select global
      */
-    $.fillSelectField = {
+    $.fillSelect = {
 
         /**
          *  Add new method
@@ -224,17 +224,17 @@
                     self.ajaxMethods[name].args = data;
                     self.ajaxMethods[name].ajaxComplete = true;
                     self.ajaxMethods[name].results = ajaxCallback(data);
-                    $.fillSelectField.trigger('ajaxSuccess');
+                    $.fillSelect.trigger('ajaxSuccess');
                 };
 
                 // Ajax error callback
                 defoptions.error  = function(xhr) {
-                    $.fillSelectField.trigger('ajaxError');
+                    $.fillSelect.trigger('ajaxError');
                 };
 
                 // Ajax complete callback
                 defoptions.complete  = function(xhr) {
-                    $.fillSelectField.trigger('ajaxComplete.fillSelect-'+self.ajaxMethods[name].id);
+                    $.fillSelect.trigger('ajaxComplete.fillSelect-'+self.ajaxMethods[name].id);
                 };
 
                 // Fire ajax
@@ -268,22 +268,22 @@
     };
 
     /**
-     *  fillSelectField jquery plugin
+     *  fillSelect jquery plugin
      *
      *  @param {object} options
      */
-    $.fn.fillSelectField = function(options) {
+    $.fn.fillSelect = function(options) {
         return this.each(function() {
-        	var data = $(this).data('fillSelectField') || options;
-        	var fillSelect = new FillSelectField(this, options);
+        	var data = $(this).data('fillSelect') || options;
+        	var fillSelect = new FillSelect(this, options);
             return this;
         });
     };
 
     /**
-     *  fillSelectField default options
+     *  fillSelect default options
      */
-    $.fn.fillSelectField.defaults = {
+    $.fn.fillSelect.defaults = {
         method : false,                  	// Name of the method to fire
         callback : $.noop,                  // Fired after fill select is completed
         defaultText : 'Select One',         // Default text displayed at the top of the select list. Set to false to disable.
